@@ -3,7 +3,9 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import Screen from './screen';
 import Keys from './keys';
+import { loadState, saveState } from './localStorage';
 import './calculator.css';
+import throttle from 'lodash/throttle';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
@@ -29,8 +31,13 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) :
     compose;
 
+const persistedState = loadState();
 const enhancer = composeEnhancers();
-const store = createStore(reducer, enhancer);
+const store = createStore(reducer, persistedState, enhancer);
+
+store.subscribe(throttle(() => {
+    saveState(store.getState());
+}, 1000))
 
 class Calculator extends React.Component {
     render() {
