@@ -1,13 +1,16 @@
 import React from 'react';
-import Calculator from './Calculator';
-import './App.css';
+import Keys from './Keys';
+import Screen from './Screen';
 
 class App extends React.Component {
     render() {
         return (
-            <Calculator />
+            <div className="calculator">
+                <Screen />
+                <Keys />
+            </div>
         )
     }
 }
 
-export default App
+export default App;

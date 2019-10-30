@@ -1,6 +1,5 @@
 import React from 'react';
 import Key from './Key';
-import './Keys.css';
 
 const Keys = () => {
     return (
