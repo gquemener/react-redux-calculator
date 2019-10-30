@@ -3,13 +3,14 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import Screen from './screen';
 import Keys from './keys';
+import { KEY_PRESSED } from './actions';
 import { loadState, saveState } from './localStorage';
 import './calculator.css';
 import throttle from 'lodash/throttle';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
-        case 'KEY_PRESSED':
+        case KEY_PRESSED:
             if ('AC' === action.value) {
                 return [];
             }
