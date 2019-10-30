@@ -1,12 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
-import Screen from './screen';
-import Keys from './keys';
+import throttle from 'lodash/throttle';
+
 import { KEY_PRESSED } from './actions';
 import { loadState, saveState } from './localStorage';
-import './calculator.css';
-import throttle from 'lodash/throttle';
+import Keys from './Keys';
+import Screen from './Screen';
+
+import './Calculator.css';
 
 const reducer = (state = [], action) => {
     switch (action.type) {

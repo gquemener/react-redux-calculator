@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './screen.css';
+import './Screen.css';
 
 const formatOutput = (keys) => {
     if (0 === keys.length) {
